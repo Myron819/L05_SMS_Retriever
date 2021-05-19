@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+// Todo: MainActivity is done by Sf
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,5 +26,4 @@ public class MainActivity extends AppCompatActivity {
 
         ft.commit();
     }
-
 }
