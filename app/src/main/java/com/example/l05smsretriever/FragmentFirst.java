@@ -55,10 +55,10 @@ public class FragmentFirst extends AppCompatActivity {
         btnRetrieveSMS.setOnClickListener(view -> {
 
             // todo: 9.	To include the runtime check in the app
-            int permissionCheck = PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.READ_SMS);
+            int permissionCheck = PermissionChecker.checkSelfPermission(FragmentFirst.this, Manifest.permission.READ_SMS);
 
             if(permissionCheck != PermissionChecker.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_SMS}, 0);
+                ActivityCompat.requestPermissions(FragmentFirst.this, new String[]{Manifest.permission.READ_SMS}, 0);
                 return;
             }
 
@@ -136,7 +136,7 @@ public class FragmentFirst extends AppCompatActivity {
 
                 } else {
                     // permission denied... notify user
-                    Toast.makeText(MainActivity.this, "Permission not granted",
+                    Toast.makeText(FragmentFirst.this, "Permission not granted",
                             Toast.LENGTH_SHORT).show();
                 }
 
