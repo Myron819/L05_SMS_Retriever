@@ -2,6 +2,7 @@ package com.example.l05smsretriever;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import androidx.fragment.app.Fragment;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentFirst extends Fragment {
-    Button btnRetrieveNum;
+    Button btnRetrieveNum, btnEmail;
     EditText etNum;
     TextView tvNumResult;
 
@@ -39,6 +40,28 @@ public class FragmentFirst extends Fragment {
         etNum = view.findViewById(R.id.etNum);
         btnRetrieveNum = view.findViewById(R.id.btnRetrieveNum);
         tvNumResult = view.findViewById(R.id.tvNumResult);
+        btnEmail = view.findViewById(R.id.btnEmail);
+
+        //Todo: Advanced Enhancement (Add a button to email the SMS content to your personal email address) done by Zuhaili
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent email = new Intent(Intent.ACTION_SEND);
+
+                email.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"19004781@rp.edu.sg"});
+                email.putExtra(Intent.EXTRA_SUBJECT,
+                        "");
+                String statement =  tvNumResult.getText().toString();
+                email.putExtra(Intent.EXTRA_TEXT,
+                        statement);
+
+                email.setType("message/rfc822");
+
+                startActivity(Intent.createChooser(email,
+                        "Choose an Email client :"));
+            }
+        });
 
 
         btnRetrieveNum.setOnClickListener(view1 -> {
