@@ -43,26 +43,22 @@ public class FragmentFirst extends Fragment {
         btnEmail = view.findViewById(R.id.btnEmail);
 
         //Todo: Advanced Enhancement (Add a button to email the SMS content to your personal email address) done by Zuhaili
-        btnEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent email = new Intent(Intent.ACTION_SEND);
+        btnEmail.setOnClickListener(view12 -> {
+            Intent email = new Intent(Intent.ACTION_SEND);
 
-                email.putExtra(Intent.EXTRA_EMAIL,
-                        new String[]{"19004781@rp.edu.sg"});
-                email.putExtra(Intent.EXTRA_SUBJECT,
-                        "");
-                String statement =  tvNumResult.getText().toString();
-                email.putExtra(Intent.EXTRA_TEXT,
-                        statement);
+            email.putExtra(Intent.EXTRA_EMAIL,
+                    new String[]{"19004781@rp.edu.sg"});
+            email.putExtra(Intent.EXTRA_SUBJECT,
+                    "");
+            String statement = tvNumResult.getText().toString();
+            email.putExtra(Intent.EXTRA_TEXT,
+                    statement);
 
-                email.setType("message/rfc822");
+            email.setType("message/rfc822");
 
-                startActivity(Intent.createChooser(email,
-                        "Choose an Email client :"));
-            }
+            startActivity(Intent.createChooser(email,
+                    "Choose an Email client :"));
         });
-
 
         btnRetrieveNum.setOnClickListener(view1 -> {
             int permissionCheck = PermissionChecker.checkSelfPermission(getActivity(), Manifest.permission.READ_SMS);
