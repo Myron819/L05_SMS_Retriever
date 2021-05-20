@@ -40,10 +40,10 @@ public class FragmentSecond extends AppCompatActivity {
         btnRetrieveWord.setOnClickListener(view -> {
 
             // todo: 9.	To include the runtime check in the app
-            int permissionCheck = PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.READ_SMS);
+            int permissionCheck = PermissionChecker.checkSelfPermission(FragmentSecond.this, Manifest.permission.READ_SMS);
 
             if (permissionCheck != PermissionChecker.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_SMS}, 0);
+                ActivityCompat.requestPermissions(FragmentSecond.this, new String[]{Manifest.permission.READ_SMS}, 0);
                 return;
             }
 
@@ -119,7 +119,7 @@ public class FragmentSecond extends AppCompatActivity {
 
                 } else {
                     // permission denied... notify user
-                    Toast.makeText(MainActivity.this, "Permission not granted",
+                    Toast.makeText(FragmentSecond.this, "Permission not granted",
                             Toast.LENGTH_SHORT).show();
                 }
 
