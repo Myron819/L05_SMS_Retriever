@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        Fragment f1 = new FragmentFirst();
+        FragmentFirst f1 = new FragmentFirst();
         ft.replace(R.id.frame1, f1);
 
-        Fragment f2 = new FragmentSecond();
+        FragmentSecond f2 = new FragmentSecond();
         ft.replace(R.id.frame2, f2);
 
         ft.commit();

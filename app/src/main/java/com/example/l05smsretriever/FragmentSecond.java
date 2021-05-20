@@ -13,11 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.PermissionChecker;
+import androidx.fragment.app.Fragment;
 
-public class FragmentSecond extends AppCompatActivity {
+public class FragmentSecond extends Fragment {
     EditText etWord;
     TextView tvWordResult;
     Button btnRetrieveWord;

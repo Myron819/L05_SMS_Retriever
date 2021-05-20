@@ -14,17 +14,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.PermissionChecker;
+import androidx.fragment.app.Fragment;
 
-public class FragmentFirst extends AppCompatActivity {
+public class FragmentFirst extends Fragment {
     EditText etNum;
     TextView tvResult;
     Button btnRetrieveSMS, btnSendEmail;
+
     public FragmentFirst() {
         // Required empty public constructor
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,7 @@ public class FragmentFirst extends AppCompatActivity {
             // todo: 9.	To include the runtime check in the app
             int permissionCheck = PermissionChecker.checkSelfPermission(FragmentFirst.this, Manifest.permission.READ_SMS);
 
-            if(permissionCheck != PermissionChecker.PERMISSION_GRANTED){
+            if (permissionCheck != PermissionChecker.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(FragmentFirst.this, new String[]{Manifest.permission.READ_SMS}, 0);
                 return;
             }
@@ -82,8 +84,6 @@ public class FragmentFirst extends AppCompatActivity {
             String filter = "address LIKE ?";
             String number = etNum.getText().toString();
             String[] filterArgs = {"%" + number + "%"};
-
-
 
 
             Cursor cursor = cr.query(uri, reqCols, filter, filterArgs, null);
