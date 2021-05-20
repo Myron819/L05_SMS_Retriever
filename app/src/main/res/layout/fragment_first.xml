@@ -11,11 +11,11 @@
     <!--Todo: fragment_first is done by Sf-->
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:textColor="@color/black"
         android:id="@+id/tvHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Only SMS containing this number" />
+        android:text="Only SMS containing this number"
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/etNum"
@@ -32,7 +32,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnRetrieveSMS"
+            android:id="@+id/btnRetrieveNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -48,10 +48,10 @@
     </LinearLayout>
 
     <TextView
-        android:textColor="@color/black"
-        android:id="@+id/tvResult"
+        android:id="@+id/tvNumResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Result" />
+        android:text="Result"
+        android:textColor="@color/black" />
 
 </LinearLayout>
