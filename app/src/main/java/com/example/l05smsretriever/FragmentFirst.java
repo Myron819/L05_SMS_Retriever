@@ -33,7 +33,7 @@ public class FragmentFirst extends AppCompatActivity {
         // Binding UI variables
         etNum = findViewById(R.id.etNum);
         tvResult = findViewById(R.id.tvNumResult);
-        btnSendEmail = findViewById(R.id.btnSendEmail);
+        // btnSendEmail = findViewById(R.id.btnSendEmail);
         btnRetrieveSMS = findViewById(R.id.btnRetrieveNum);
 
 

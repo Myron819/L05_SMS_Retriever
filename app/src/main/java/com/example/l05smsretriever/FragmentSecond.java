@@ -62,8 +62,8 @@ public class FragmentSecond extends AppCompatActivity {
             ContentResolver cr = getContentResolver();
 
 
-            // Todo: 3.	When user enters a word under Only SMS containing this word,
-            //  it will retrieve only SMS that are received from the entered word
+            // TODO: 4.	When user enters a word under Only SMS with this word,
+            //  it will retrieve only SMS that contains the entered keyword
             String filter = "address LIKE ?";
             String word = etWord.getText().toString();
             String[] filterArgs = {"%" + word + "%"};
