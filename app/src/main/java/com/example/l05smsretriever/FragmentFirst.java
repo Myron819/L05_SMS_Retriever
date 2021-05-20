@@ -70,21 +70,24 @@ public class FragmentFirst extends AppCompatActivity {
             //  address is the number of the other party
             //  body is the message content
             //  type 1 is received, type 2 sent
-            String[] reqCols = new String[]{"date", "address", "body", "type"};
+            String[] reqCols = new String[]{"numb", "address", "body", "type"};
 
             // Get Content Resolver object from which to
             //  query the content provider
             ContentResolver cr = getContentResolver();
 
 
-            String filter = "body LIKE ? AND body LIKE ? AND body LIKE ?";
-            String[] filterArgs = {"%late%", "%minute%"};
+            // Todo: 3.	When user enters a number under Only SMS containing this number,
+            //  it will retrieve only SMS that are received from the entered number
+            String filter = "address LIKE ?";
+            String number = etNum.getText().toString();
+            String[] filterArgs = {"%" + number + "%"};
+
+
 
 
             Cursor cursor = cr.query(uri, reqCols, filter, filterArgs, null);
-            String smsBody = "Marty McFly: Wait a minute. Wait a minute. Doc... Are you telling me that it's 8:25? " + "\n" +
-                    "Dr. Emmett Brown: Precisely. " + "\n" +
-                    "Marty McFly: Damn! I'm late for school!";
+            String smsBody = "";
 
             if (cursor.moveToFirst()) {
                 do {
