@@ -14,21 +14,27 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentFirst extends AppCompatActivity {
-    TextView tvSms;
-    Button btnRetrieve;
+    EditText etNum;
+    TextView tvResult;
+    Button btnRetrieveSMS, btnSendEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_first);
-        tvSms = findViewById(R.id.tv);
-        btnRetrieve = findViewById(R.id.btnRetrieve);
 
-        btnRetrieve.setOnClickListener(view -> {
+        // Binding UI variables
+        etNum = findViewById(R.id.etNum);
+        tvResult = findViewById(R.id.tvResult);
+        btnRetrieveSMS = findViewById(R.id.btnRetrieveSMS);
+        btnSendEmail = findViewById(R.id.btnSendEmail);
+
+        btnRetrieveSMS.setOnClickListener(view -> {
 
             // todo: 9.	To include the runtime check in the app
             int permissionCheck = PermissionChecker.checkSelfPermission
