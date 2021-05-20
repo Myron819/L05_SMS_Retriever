@@ -32,9 +32,9 @@ public class FragmentFirst extends AppCompatActivity {
 
         // Binding UI variables
         etNum = findViewById(R.id.etNum);
-        tvResult = findViewById(R.id.tvNumResult);
-        btnSendEmail = findViewById(R.id.btnSendEmail);
-        btnRetrieveSMS = findViewById(R.id.btnRetrieveNum);
+        tvResult = findViewById(R.id.tvResult);
+        // btnSendEmail = findViewById(R.id.btnSendEmail);
+        btnRetrieveSMS = findViewById(R.id.btnRetrieveSMS);
 
 
         btnSendEmail.setOnClickListener(v -> {
