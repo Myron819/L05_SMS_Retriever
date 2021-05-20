@@ -1,28 +1,30 @@
 package com.example.l05smsretriever;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.PermissionChecker;
-
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
+
 public class FragmentFirst extends AppCompatActivity {
     EditText etNum;
     TextView tvResult;
     Button btnRetrieveSMS, btnSendEmail;
-
+    public FragmentFirst() {
+        // Required empty public constructor
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +33,32 @@ public class FragmentFirst extends AppCompatActivity {
         // Binding UI variables
         etNum = findViewById(R.id.etNum);
         tvResult = findViewById(R.id.tvResult);
-        btnRetrieveSMS = findViewById(R.id.btnRetrieveSMS);
         btnSendEmail = findViewById(R.id.btnSendEmail);
+        btnRetrieveSMS = findViewById(R.id.btnRetrieveSMS);
 
+
+        btnSendEmail.setOnClickListener(v -> {
+
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"19039480@rp.edu.sg"});
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Testing Email Intent");
+            String statement = tvResult.getText().toString();
+            emailIntent.putExtra(Intent.EXTRA_TEXT, statement);
+
+            emailIntent.setType("message/rfc822");
+
+            startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
+
+
+        });
         btnRetrieveSMS.setOnClickListener(view -> {
 
             // todo: 9.	To include the runtime check in the app
-            int permissionCheck = PermissionChecker.checkSelfPermission
-                    (MainActivity.this, Manifest.permission.READ_SMS);
+            int permissionCheck = PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.READ_SMS);
 
-            if (permissionCheck != PermissionChecker.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.READ_SMS}, 0);
-                // stops the action from proceeding further as permission not
-                //  granted yet
+            if(permissionCheck != PermissionChecker.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_SMS}, 0);
                 return;
             }
 
@@ -87,9 +101,8 @@ public class FragmentFirst extends AppCompatActivity {
                     smsBody += type + " " + address + "\n at" + date + "\n\"" + body + "\"\n\n";
                 } while (cursor.moveToNext());
             }
-            tvSms.setText(smsBody);
+            tvResult.setText(smsBody);
         });
-
 
     }
 
@@ -116,7 +129,7 @@ public class FragmentFirst extends AppCompatActivity {
 
                     // permission was granted, yay! Do the read SMS
                     //  as if the btnRetrieve is clicked
-                    btnRetrieve.performClick();
+                    btnRetrieveSMS.performClick();
 
                 } else {
                     // permission denied... notify user
