@@ -3,23 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="15dp"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:paddingTop="15dp"
     android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingTop="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
     tools:context=".MainActivity">
+
+    <!--    1.	The UI will react to the phone orientation where -->
+    <!--    it will maximise the available space -->
+    <!--    to display the 2 components of the App.-->
+    <!--    -->
+    <!--    2.	Each component will allow user to input criteria to -->
+    <!--    retrieve the SMS and display on screen.-->
 
     <FrameLayout
         android:id="@+id/frame1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <FrameLayout
         android:id="@+id/frame2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
 </LinearLayout>

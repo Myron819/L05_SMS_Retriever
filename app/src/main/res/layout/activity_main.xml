@@ -12,6 +12,14 @@
 
     <!--Todo: activity_main is done by Sf-->
 
+    <!--    1.	The UI will react to the phone orientation where -->
+    <!--    it will maximise the available space -->
+    <!--    to display the 2 components of the App.-->
+    <!--    -->
+    <!--    2.	Each component will allow user to input criteria to -->
+    <!--    retrieve the SMS and display on screen.-->
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
